@@ -1,0 +1,115 @@
+﻿<Window x:Class="PassSaver.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                
+        xmlns:resx="clr-namespace:PassSaver.Properties"
+        mc:Ignorable="d"
+        Title="PassSaver" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="{x:Static resx:Resources.File}" Name="MenuItem_File_New" Click="MenuItem_File_New_Click">
+                <MenuItem Header="_New"></MenuItem>
+                <MenuItem Header="_Open">
+                    <MenuItem Header="Open File..."/>
+                    <MenuItem Header="Open URL..."/>
+                    <Separator/>
+                    <MenuItem Header="Find Files..."/>
+                    <MenuItem Header="Find Files(In folder)..."/>
+                </MenuItem>
+                <MenuItem Header="Open _Recent"></MenuItem>
+                <MenuItem Header="_Close"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Save"></MenuItem>
+                <MenuItem Header="Save _As"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Database Settings..."></MenuItem>
+                <MenuItem Header="Change _Master Key..."></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Print"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Import"></MenuItem>
+                <MenuItem Header="_Export"></MenuItem>
+                <MenuItem Header="S_ynchronize"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Lock Workspace"></MenuItem>
+                <MenuItem Header="E_xit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Group"></MenuItem>
+            <MenuItem Header="_Entry"></MenuItem>
+            <MenuItem Header="F_ind"></MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="Change Language">
+                    <MenuItem Header="English" Name="MenuItem_View_ChangeLang_Eng" Click="MenuItem_View_ChangeLang_Eng_Click"/>
+                    <MenuItem Header="Russian" Name="MenuItem_View_ChangeLang_Ru" Click="MenuItem_View_ChangeLang_Ru_Click"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Tools"></MenuItem>
+            <MenuItem Header="_Help"></MenuItem>
+        </Menu>
+        <ToolBar DockPanel.Dock="Top" />
+
+        <Grid DockPanel.Dock="Top" Height="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+            <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="5" HorizontalAlignment="Stretch" />
+
+
+            <DockPanel Grid.Column="0" Grid.Row="0">
+                <TreeView>
+                    <TreeView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Add Group..."></MenuItem>
+                            <MenuItem Header="Edit Group..."></MenuItem>
+                            <MenuItem Header="Duplicate Group..."></MenuItem>
+                            <MenuItem Header="Delete Group"></MenuItem>
+                            <Separator />
+                            <MenuItem Header="Rearrange"></MenuItem>
+                            <Separator />
+                            <MenuItem Header="Find in This Group..."></MenuItem>
+                            <Separator />
+                            <MenuItem Header="Print Group..."></MenuItem>
+                            <MenuItem Header="Export Group..."></MenuItem>
+                        </ContextMenu>
+                    </TreeView.ContextMenu>
+                    <TreeViewItem Header="NewDB" IsExpanded="True">
+                        <TreeViewItem Header="General"/>
+                        <TreeViewItem Header="Games"/>
+                        <TreeViewItem Header="Work"/>
+                    </TreeViewItem>
+                </TreeView>
+            </DockPanel>
+            <DockPanel Grid.Column="2" Grid.Row="0">
+                <DataGrid>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Title" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header="User Name" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Password" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header="URL" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Notes" Width="100"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </DockPanel>
+            <DockPanel Grid.Row="2" Grid.ColumnSpan="3">
+                <TextBlock Text="123" IsEnabled="False"/>
+            </DockPanel>
+            <StatusBar Grid.Row="4" Grid.ColumnSpan="4" Margin="0,0,0,0">
+                <StatusBarItem Content="0 of 2 selected" Width="150"></StatusBarItem>
+                <Separator/>
+                <StatusBarItem Content="Ready"/>
+                
+            </StatusBar>
+        </Grid>
+    </DockPanel>
+</Window>

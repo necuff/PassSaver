@@ -66,7 +66,7 @@
 
 
             <DockPanel Grid.Column="0" Grid.Row="0">
-                <TreeView>
+                <TreeView x:Name="treeView1">
                     <TreeView.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Add Group..."></MenuItem>
@@ -82,11 +82,11 @@
                             <MenuItem Header="Export Group..."></MenuItem>
                         </ContextMenu>
                     </TreeView.ContextMenu>
-                    <TreeViewItem Header="NewDB" IsExpanded="True">
-                        <TreeViewItem Header="General"/>
-                        <TreeViewItem Header="Games"/>
-                        <TreeViewItem Header="Work"/>
-                    </TreeViewItem>
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}">
+                            <TextBlock Text="{Binding Name}" />
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
                 </TreeView>
             </DockPanel>
             <DockPanel Grid.Column="2" Grid.Row="0">

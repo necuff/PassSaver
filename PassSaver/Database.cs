@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace PassSaver
@@ -8,7 +9,11 @@ namespace PassSaver
     {
         public string Name { get; set; }
 
-        public List<Group> groups = new List<Group>();
+        public ObservableCollection<Group> groups;
 
+        public Database()
+        {
+            groups = new ObservableCollection<Group>();
+        }
     }
 }

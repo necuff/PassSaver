@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -29,6 +31,17 @@ namespace PassSaver
 
         private void MenuItem_File_New_Click(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Create New Database";
+            saveFileDialog.FileName = "Database";
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.Filter = "PassSaver PSDX Files |*.psdx" + "| All Files |*.*";
+
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, "");
+            }
 
         }
 
@@ -43,6 +56,6 @@ namespace PassSaver
         {
             App.ChangeCulture(new CultureInfo("ru-RU"));
 
-        }
+        }        
     }
 }

@@ -43,18 +43,12 @@ namespace PassSaver
             {
                 File.WriteAllText(saveFileDialog.FileName, "");
 
-                Database db = new Database() { Name = System.IO.Path.GetFileNameWithoutExtension(saveFileDialog.SafeFileName) };
+                Database db = new Database() { Name = System.IO.Path.GetFileNameWithoutExtension(saveFileDialog.SafeFileName) };                
 
-                /*
-                tv_DbName.Header = db.Name;
-                tv_DbName.DataContext = null;
-                db.groups.Add(new Group { Name = "123" });
-                */
-
-                ObservableCollection<Node> nodes = GetCollection();
+                ObservableCollection<Group> nodes = Group.GetCollectionGroups(db.Name);
 
 
-                treeView1.ItemsSource = nodes;
+                tv_Groups.ItemsSource = nodes;
             }
 
         }
@@ -70,46 +64,25 @@ namespace PassSaver
         {
             App.ChangeCulture(new CultureInfo("ru-RU"));
 
-        }
+        } 
+        
 
-        public ObservableCollection<Node> GetCollection()
+        private void tv_Groups_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            return new ObservableCollection<Node>
+            TreeViewItem treeViewItem = VisualUpwardSearch(e.OriginalSource as DependencyObject);
+
+            if (treeViewItem != null)
             {
-                new Node
-                {
-                    Name ="Европа",
-                    Nodes = new ObservableCollection<Node>
-                    {
-                        new Node {Name="Германия" },
-                        new Node {Name="Франция" },
-                        new Node
-                        {
-                            Name ="Великобритания",
-                            Nodes = new ObservableCollection<Node>
-                            {
-                                new Node {Name="Англия" },
-                                new Node {Name="Шотландия" },
-                                new Node {Name="Уэльс" },
-                                new Node {Name="Сев. Ирландия" },
-                            }
-                        }
-                    }
-                },
-                new Node
-                {
-                    Name ="Азия",
-                    Nodes = new ObservableCollection<Node>
-                    {
-                        new Node {Name="Китай" },
-                        new Node {Name="Япония" },
-                        new Node { Name ="Индия" }
-                    }
-                },
-                new Node { Name="Африка" },
-                new Node { Name="Америка" },
-                new Node { Name="Австралия" }
-            };
+                treeViewItem.Focus();
+                e.Handled = true;
+            }
+        }
+        static TreeViewItem VisualUpwardSearch(DependencyObject source)
+        {
+            while (source != null && !(source is TreeViewItem))
+                source = VisualTreeHelper.GetParent(source);
+
+            return source as TreeViewItem;
         }
     }
 }

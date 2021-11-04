@@ -84,5 +84,11 @@ namespace PassSaver
 
             return source as TreeViewItem;
         }
+
+        private void tv_AddGroup_Click(object sender, RoutedEventArgs e)
+        {
+            AddGroup addGroup = new AddGroup();
+            addGroup.Show();
+        }
     }
 }

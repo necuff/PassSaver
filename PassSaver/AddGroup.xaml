@@ -1,0 +1,47 @@
+﻿<Window x:Class="PassSaver.AddGroup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PassSaver"
+        mc:Ignorable="d"
+        Title="Add Group" Height="400" Width="550" ResizeMode="NoResize">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Height="80" Background="Gray">
+            <StackPanel Orientation="Horizontal">
+                <Border Height="80" Width="80"></Border>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Add Group" Foreground="White" FontSize="25" FontWeight="Bold"></Label>
+                    <Label Content="Create a new entry group" Foreground="White" FontSize="16"></Label>
+                </StackPanel>
+            </StackPanel>
+
+        </Border>
+        <TabControl DockPanel.Dock="Top" Margin="20">
+            <TabItem Header="General">
+                <DockPanel Margin="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Name:"></Label>
+                        <TextBox Grid.Row="0" Grid.Column="1"></TextBox>
+
+                        <Label  Grid.Row="1" Content="Icon:"></Label>
+                        <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
+                        <Button Content="OK" HorizontalAlignment="Left" Margin="156,38,0,0" Grid.Row="3" VerticalAlignment="Top" Width="92" Grid.Column="1"/>
+                        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="268,38,0,0" Grid.Row="3" VerticalAlignment="Top" Width="92"/>
+                    </Grid>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+
+    </DockPanel>
+</Window>

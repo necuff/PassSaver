@@ -69,7 +69,7 @@
                 <TreeView x:Name="tv_Groups" MouseRightButtonDown="tv_Groups_MouseRightButtonDown">
                     <TreeView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Add Group..."></MenuItem>
+                            <MenuItem Header="Add Group..." Name="tv_AddGroup" Click="tv_AddGroup_Click"></MenuItem>
                             <MenuItem Header="Edit Group..."></MenuItem>
                             <MenuItem Header="Duplicate Group..."></MenuItem>
                             <MenuItem Header="Delete Group"></MenuItem>
